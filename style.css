@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -94,6 +93,7 @@ body {
 .nav-menu li:nth-child(4) { animation-delay: 0.4s; }
 .nav-menu li:nth-child(5) { animation-delay: 0.5s; }
 .nav-menu li:nth-child(6) { animation-delay: 0.6s; }
+.nav-menu li:nth-child(7) { animation-delay: 0.7s; } /* Added for new Interests link */
 
 @keyframes fadeInDown {
     from {
@@ -251,35 +251,9 @@ section h2 {
     color: #00cc66;
 }
 
-.education-entry {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #333;
-}
-
-.education-entry:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
-.education-entry h3 {
-    font-size: 1.75rem;
-    color: #66ffcc;
-    margin-bottom: 0.5rem;
-}
-
-.education-entry .institution {
-    font-size: 1.1rem;
-    font-style: italic;
-    color: #00cc66;
-    margin-bottom: 0.25rem;
-}
-
-.education-entry .date {
-    font-size: 1rem;
-    color: #888;
-}
+/* REMOVED conflicting Education styles from here.
+   The correct styles are in the Override section.
+*/
 
 .skills-grid {
     display: flex;
@@ -555,7 +529,8 @@ footer {
         font-size: 2rem;
     }
 }
-/*Color Override*/
+
+/* --- Light Theme Color Override --- */
 body {
     background-color: #F4F7FA; 
     color: #333333; 
@@ -625,12 +600,9 @@ section,
 
 
 section h2 { color: #112240; }
-.education-entry h3 { color: #007bff; }
-.education-entry .institution { color: #333; }
-.education-entry .date { color: #777; }
 
 .skill-item {
-    border-color: #E0E0E0; /* Match card border */
+    border-color: #E0E0E0;
 }
 
 .achievement-entry {
@@ -670,25 +642,195 @@ section h2 { color: #112240; }
 .email-link a:hover { color: #0056b3; }
 .social-links a { color: #555; }
 .social-links a:hover { color: #007bff; }
-/* --- Social Icon OG Color Hovers --- */
 
-/* Override the default blue hover for specific icons */
+/* --- Social Icon OG Color Hovers --- */
 .social-links a:hover .fa-facebook {
-    color: #1877F2; /* Facebook Blue */
+    color: #1877F2;
 }
 
 .social-links a:hover .fa-github {
-    color: #181717; /* GitHub Black */
+    color: #181717;
 }
 
 .social-links a:hover .fa-x-twitter {
-    color: #000000; /* X Black */
+    color: #000000;
 }
 
 .social-links a:hover .fa-linkedin {
-    color: #0077B5; /* LinkedIn Blue */
+    color: #0077B5;
 }
 
 .social-links a:hover .fa-phone {
-    color: #25D366; /* "Call" Green (like WhatsApp) */
+    color: #25D366;
+}
+
+/* --- FIX: Education Section Layout & Logo Size --- */
+.education-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.education-entry:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.education-entry h3 {
+    font-size: 1.75rem;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.education-entry .institution {
+    display: block; 
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.education-entry .date {
+    font-size: 1rem;
+    color: #777;
+}
+
+.education-details {
+    flex-grow: 1;
+}
+
+.education-logo {
+    height: 60px;
+    width: auto;  
+    max-width: 150px;
+    margin-left: 1rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+a:hover .education-logo {
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Interests Section (Minimalist Fix) --- */
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.interest-card {
+    background: transparent; /* Makes background invisible */
+    border: 1px solid transparent; /* Makes border invisible */
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.interest-card i {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.interest-card h3 {
+    font-size: 1.5rem;
+    color: #112240;
+    margin-bottom: 0.5rem;
+}
+
+.interest-card p {
+    color: #555;
+}
+
+.interest-card .interest-list {
+    text-align: left;
+    margin-top: 1rem;
+    padding-left: 20px;
+    color: #555;
+}
+
+.interest-card .interest-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.interest-card:hover {
+    background: #FFFFFF; /* White background appears on hover */
+    border: 1px solid #E0E0E0; /* Border appears on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+/* --- Scroll to Top Button --- */
+#scrollTopBtn {
+    display: block;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+    
+    background: #007bff; /* Main theme blue */
+    color: #FFFFFF; /* White icon */
+    font-size: 1rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45px; /* Vertically centers the icon */
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#scrollTopBtn:hover {
+    background: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1);
+}
+
+/* This is a CSS-only trick to show the button */
+#home:not(:target) ~ #scrollTopBtn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#home:target ~ #scrollTopBtn {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+/* --- Mouse Follower Robot --- */
+/* --- Mouse Follower Skeleton --- */
+img#mouseRobot {
+    position: fixed;
+    
+    /* New size: 40px wide by 50px tall */
+    width: 40px;
+    height: 50px;
+    
+    /* Center it: half of height (25) and width (20) */
+    top: -25px; 
+    left: -20px;
+    
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    
+    /* This prevents the pixel art from looking blurry */
+    image-rendering: pixelated; 
 }

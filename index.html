@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farhan Shadik Souad - Personal Portfolio</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
 </head>
 <body>
 
     <header class="header">
         <nav class="navbar">
             <a href="#home" class="logo">SOUAD</a>
-            <ul class="nav-menu">
+           <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#achievement">Achievement</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#interests">Interests</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -47,20 +51,31 @@
     </div>
 </section>
 
-        <section id="education">
+     <section id="education">
     <h2>Education</h2>
     
     <div class="education-entry">
-        <h3>B.Sc in Computer Science and Engineering</h3>
-        <p class="institution">American International University - Bangladesh</p>
-        <p class="date">2024 - Present</p>
+        <div class="education-details">
+            <h3>B.Sc in Computer Science and Engineering</h3>
+            <p class="institution">American International University - Bangladesh</p>
+            <p class="date">2024 - Present</p>
+        </div>
+        <a href="https://www.aiub.edu/" target="_blank">
+            <img src="OIP-modified.png" alt="American International University Logo" class="education-logo">
+        </a>
     </div>
 
     <div class="education-entry">
-        <h3>HSC in Science</h3>
-        <p class="institution">Engineering University School & College</p>
-        <p class="date">2022 - 2023</p>
+        <div class="education-details">
+            <h3>HSC in Science</h3>
+            <p class="institution">Engineering University School & College</p>
+            <p class="date">2022 - 2023</p>
+        </div>
+        <a href="https://www.eusc.edu.bd/" target="_blank">
+            <img src="eusc_logo.jpg" alt="Engineering University School & College Logo" class="education-logo">
+        </a>
     </div>
+</section>
 
 <section id="skills">
     <h2>Skills</h2>
@@ -157,6 +172,51 @@
 
         </div>
 </section>
+ <section id="interests">
+            <h2>Interests & Hobbies</h2>
+            <div class="interests-grid">
+
+             <div class="interest-card">
+                    <i class="fas fa-futbol"></i> 
+                    <h3>Football Analysis</h3>
+                    <p>I enjoy the "beautiful game" on a deeper, analytical level:</p>
+                    
+                    <ul class="interest-list">
+                        <li>Analyzing tactics and formations</li>
+                        <li>How coaches read and counter each other</li>
+                        <li>Judging the individual brilliance of players</li>
+                        <li>The impact of stadium atmosphere on play</li>
+                    </ul>
+                </div>
+
+                <div class="interest-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Gaming</h3>
+                    <p>I enjoy a variety of genres with a focus on world-building and mechanics:</p>
+                    
+                    <ul class="interest-list">
+                        <li>Immersive historical games (e.g., Assassin's Creed)</li>
+                        <li>Open-world exploration (e.g., Days Gone)</li>
+                        <li>Co-op horror experiences (e.g., Phasmophobia)</li>
+                        <li>Analyzing and understanding core game mechanics</li>
+                    </ul>
+                </div>
+
+                <div class="interest-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Reading</h3>
+                    <p>I'm an avid reader with a passion for classic detective and adventure-mystery series:</p>
+                    <ul class="interest-list">
+                        <li>Sherlock Holmes</li>
+                        <li>Feluda series by Satyajit Ray</li>
+                        <li>Masud Rana spy thrillers</li>
+                        <li>Professor Shanku's sci-fi adventures</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        <section id="contact">
 
         <section id="contact">
             <h2>Contact Me</h2>
@@ -193,6 +253,76 @@
     <footer>
         <p>&copy; 2025 Farhan Shadik Souad. All rights reserved.</p>
     </footer>
+    <img id="mouseRobot" src="caricatura.gif" alt="Walking Skeleton">
+    <script>
+        const robot = document.getElementById('mouseRobot');
+
+        let targetX = window.innerWidth / 2;
+        let targetY = window.innerHeight / 2;
+        
+        let currentX = window.innerWidth / 2;
+        let currentY = window.innerHeight / 2;
+        
+        let currentDirection = 1; 
+        
+        const easing = 0.0009; 
+        
+        let isVisible = false; 
+        let isScrolling = false; 
+        let scrollTimeout; 
+
+        window.addEventListener('mousemove', (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            
+            if (!isVisible) {
+                robot.style.opacity = '1';
+                isVisible = true;
+            }
+        });
+        
+        window.addEventListener('scroll', () => {
+            if (!isVisible) return; 
+
+            isScrolling = true;
+            robot.style.opacity = '0'; 
+            
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+                robot.style.opacity = '1'; 
+                
+                const spawnRadius = 150; 
+                const randomAngle = Math.random() * 2 * Math.PI; 
+                currentX = targetX + Math.cos(randomAngle) * spawnRadius;
+                currentY = targetY + Math.sin(randomAngle) * spawnRadius;
+                
+            }, 100); 
+        });
+
+        const updateRobotPosition = () => {
+            
+            if (!isScrolling) {
+                currentX += (targetX - currentX) * easing;
+                currentY += (targetY - currentY) * easing;
+                
+                let dx = targetX - currentX;
+
+                if (dx > 2) {
+                    currentDirection = 1; 
+                } else if (dx < -2) {
+                    currentDirection = -1; 
+                }
+            }
+
+            robot.style.transform = `translate(${currentX}px, ${currentY}px) scaleX(${currentDirection})`;
+            
+            requestAnimationFrame(updateRobotPosition);
+        };
+
+        updateRobotPosition();
+    </script>
     
 </body>
 
