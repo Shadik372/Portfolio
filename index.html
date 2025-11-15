@@ -133,6 +133,13 @@
         </div>
 
         <div class="achievement-entry">
+            <i class="fas fa-scroll"></i> <div class="achievement-text">
+                <h3>Participation Certificate, ICEBTM 2025</h3>
+                <p>Received certificate for co-authoring the paper "Biodiversity and Business: Strategic Planning for Nature-Positive Growth in Bangladesh's Industrial Expansion".</p>
+            </div>
+        </div>
+
+        <div class="achievement-entry">
             <i class="fas fa-trophy"></i> <div class="achievement-text">
                 <h3>2nd Place - IT Project Competition</h3>
                 <p>Engineering University School & College, 2022</p>
@@ -253,78 +260,7 @@
     <footer>
         <p>&copy; 2025 Farhan Shadik Souad. All rights reserved.</p>
     </footer>
-    <img id="mouseRobot" src="caricatura.gif" alt="Walking Skeleton">
-    <script>
-        const robot = document.getElementById('mouseRobot');
-
-        let targetX = window.innerWidth / 2;
-        let targetY = window.innerHeight / 2;
-        
-        let currentX = window.innerWidth / 2;
-        let currentY = window.innerHeight / 2;
-        
-        let currentDirection = 1; 
-        
-        const easing = 0.0009; 
-        
-        let isVisible = false; 
-        let isScrolling = false; 
-        let scrollTimeout; 
-
-        window.addEventListener('mousemove', (e) => {
-            targetX = e.clientX;
-            targetY = e.clientY;
-            
-            if (!isVisible) {
-                robot.style.opacity = '1';
-                isVisible = true;
-            }
-        });
-        
-        window.addEventListener('scroll', () => {
-            if (!isVisible) return; 
-
-            isScrolling = true;
-            robot.style.opacity = '0'; 
-            
-            clearTimeout(scrollTimeout);
-            
-            scrollTimeout = setTimeout(() => {
-                isScrolling = false;
-                robot.style.opacity = '1'; 
-                
-                const spawnRadius = 150; 
-                const randomAngle = Math.random() * 2 * Math.PI; 
-                currentX = targetX + Math.cos(randomAngle) * spawnRadius;
-                currentY = targetY + Math.sin(randomAngle) * spawnRadius;
-                
-            }, 100); 
-        });
-
-        const updateRobotPosition = () => {
-            
-            if (!isScrolling) {
-                currentX += (targetX - currentX) * easing;
-                currentY += (targetY - currentY) * easing;
-                
-                let dx = targetX - currentX;
-
-                if (dx > 2) {
-                    currentDirection = 1; 
-                } else if (dx < -2) {
-                    currentDirection = -1; 
-                }
-            }
-
-            robot.style.transform = `translate(${currentX}px, ${currentY}px) scaleX(${currentDirection})`;
-            
-            requestAnimationFrame(updateRobotPosition);
-        };
-
-        updateRobotPosition();
-    </script>
     
 </body>
 
 </html>
-
